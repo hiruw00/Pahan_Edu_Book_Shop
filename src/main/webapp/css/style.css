@@ -1,0 +1,79 @@
+/* login.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #d7e1ec, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    width: 360px;
+    transition: all 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-2px);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-card button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 0.95em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.credentials {
+    margin-top: 20px;
+    background: #f1f1f1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.credentials code {
+    background-color: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
