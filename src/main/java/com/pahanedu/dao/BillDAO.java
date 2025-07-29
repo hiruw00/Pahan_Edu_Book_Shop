@@ -1,5 +1,4 @@
 package com.pahanedu.dao;
-
 import com.pahanedu.model.Bill;
 import com.pahanedu.util.DBUtil;
 import java.sql.*;
@@ -7,19 +6,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BillDAO {
-    public void addBill(Bill bill) {
-        String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, bill.getCustomerAccountNumber());
-            stmt.setInt(2, bill.getUserId()); // Added user_id
-            stmt.setDouble(3, bill.getAmount());
-            stmt.setDate(4, new java.sql.Date(bill.getDate().getTime()));
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+   public int addBill(Bill bill) {
+    String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date) VALUES (?, ?, ?, ?)";
+    int billId = -1;
+
+    try (Connection conn = DBUtil.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+        stmt.setInt(1, bill.getCustomerAccountNumber());
+        stmt.setInt(2, bill.getUserId());
+        stmt.setDouble(3, bill.getAmount());
+        stmt.setDate(4, new java.sql.Date(bill.getDate().getTime()));
+        stmt.executeUpdate();
+
+        // Get the generated bill ID
+        try (ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                billId = rs.getInt(1);
+            }
         }
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return billId;
+}
+
 
     public List<Bill> getAllBills() {
         List<Bill> bills = new ArrayList<>();
