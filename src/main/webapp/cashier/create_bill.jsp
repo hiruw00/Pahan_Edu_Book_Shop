@@ -89,7 +89,7 @@
                 <strong style="font-size: 20px;">Pahan Edu Bookshop - Cashier</strong>
             </div>
             <div class="top-right">
-                <form action="../logout" method="post" style="display:inline;">
+                <form action="${pageContext.request.contextPath}/logout" method="post" style="display:inline;">
                     <button type="submit" class="logout-btn">Logout</button>
                 </form>
             </div>
@@ -99,11 +99,11 @@
         <div class="navbar">
             <div class="nav-left">
                 <div class="nav-links">
-                    <a href="dashboard.jsp">Dashboard</a>
-                    <a href="customers.jsp">Customers</a>
-                    <a href="${pageContext.request.contextPath}/create_bill">Create Bill</a>
-                    <a href="view_bills.jsp">View Bills</a>
-                    <a href="help.jsp">Help</a>
+                 <a href="<%= request.getContextPath() %>/cashier/dashboard.jsp">Dashboard</a>
+                <a href="${pageContext.request.contextPath}/customers">Customers</a>
+                <a href="<%= request.getContextPath() %>/cashier/create_bill.jsp">Create Bill</a>
+                <a href="<%= request.getContextPath() %>/view_bills">View Bills</a>
+                <a href="<%= request.getContextPath() %>/cashier/help.jsp">Help</a>
                 </div>
             </div>
         </div>
