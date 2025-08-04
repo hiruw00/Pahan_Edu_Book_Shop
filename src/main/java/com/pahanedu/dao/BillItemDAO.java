@@ -5,6 +5,8 @@ import com.pahanedu.util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillItemDAO {
@@ -45,5 +47,23 @@ public class BillItemDAO {
             e.printStackTrace();
         }
     }
+    public List<BillItem> getBillItemsByBillId(int billId) throws Exception {
+    List<BillItem> items = new ArrayList<>();
+    Connection conn = DBUtil.getConnection();
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bill_items WHERE bill_id = ?");
+    stmt.setInt(1, billId);
+    ResultSet rs = stmt.executeQuery();
+    while (rs.next()) {
+        BillItem item = new BillItem();
+        item.setId(rs.getInt("id"));
+        item.setBillId(rs.getInt("bill_id"));
+        item.setItemId(rs.getInt("item_id"));
+        item.setQuantity(rs.getInt("quantity"));
+        item.setPrice(rs.getDouble("price"));
+        items.add(item);
+    }
+    return items;
+}
+
 }
 

@@ -55,4 +55,21 @@ public class BillDAO {
         }
         return bills;
     }
+    public Bill getBillById(int billId) throws Exception {
+    Connection conn = DBUtil.getConnection();
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bills WHERE id = ?");
+    stmt.setInt(1, billId);
+    ResultSet rs = stmt.executeQuery();
+    if (rs.next()) {
+        Bill bill = new Bill();
+        bill.setId(rs.getInt("id"));
+        bill.setCustomerAccountNumber(rs.getInt("customer_account_number"));
+        bill.setUserId(rs.getInt("user_id"));
+        bill.setAmount(rs.getDouble("amount"));
+        bill.setDate(rs.getTimestamp("date"));
+        return bill;
+    }
+    return null;
+}
+
 }
