@@ -1,0 +1,204 @@
+/* login.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #aacaec, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-card {
+    background: #86cad6;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    width: 360px;
+    transition: all 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-2px);
+}
+
+.login-card h1,h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-card input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.login-card button {
+    width: 90%;
+    padding: 12px;
+    background-color: #2e82db;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-card button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 0.95em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.credentials {
+    margin-top: 20px;
+    background: #f1f1f1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.credentials code {
+    background-color: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* dashboard.css */
+
+/* General body styling override for dashboard (not login) */
+.dashboard-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%; /*  Add this line */
+    background-color: #005f73;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logout-btn {
+    background-color: #ee6c4d;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.navbar .logout-btn:hover {
+    background-color: #d65a3c;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    padding: 30px;
+}
+
+/* Welcome text */
+.welcome {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Quick Access Section */
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: #005f73;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.card a {
+    text-decoration: none;
+    color: #005f73;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f0f0f0;
+    font-size: 14px;
+    color: #666;
+}
+
