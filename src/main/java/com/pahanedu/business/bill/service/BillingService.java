@@ -50,7 +50,9 @@ public class BillingService {
             billDTO.getCustomerAccountNumber(),
             billDTO.getUserId(),
             billDTO.getAmount(),
-            billDTO.getDate()
+            billDTO.getDate(),
+            billDTO.getEmail(),
+            billDTO.getPaymentMethod()
         );
 
         List<BillItem> items = itemDTOs.stream()

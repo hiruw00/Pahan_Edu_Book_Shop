@@ -9,7 +9,7 @@ public class DBUtil {
     private static DBUtil instance;
     private static final String URL = "jdbc:mysql://localhost:3306/pahanedu_bookshop";
     private static final String USER = "root";
-    private static final String PASSWORD = ""; // change if needed
+    private static final String PASSWORD = "";
 
     // Private constructor
     private DBUtil() {

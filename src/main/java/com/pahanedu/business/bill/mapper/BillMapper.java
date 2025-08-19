@@ -12,7 +12,9 @@ public class BillMapper {
             rs.getInt("customer_account_number"),
             rs.getInt("user_id"),
             rs.getDouble("amount"),
-            rs.getDate("date")
+            rs.getDate("date"),
+            rs.getString("email"),          // new field
+            rs.getString("payment_method")  // new field
         );
     }
 }

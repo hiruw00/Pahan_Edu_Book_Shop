@@ -11,7 +11,7 @@ import java.util.List;
 public class BillDAO {
 
     public int addBill(Bill bill) {
-        String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date, email, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
         int generatedId = -1;
         try (Connection conn = DBUtil.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -20,6 +20,8 @@ public class BillDAO {
             stmt.setInt(2, bill.getUserId());
             stmt.setDouble(3, bill.getAmount());
             stmt.setDate(4, new java.sql.Date(bill.getDate().getTime()));
+            stmt.setString(5, bill.getEmail());
+            stmt.setString(6, bill.getPaymentMethod());
             stmt.executeUpdate();
 
             try (ResultSet rs = stmt.getGeneratedKeys()) {
@@ -32,15 +34,17 @@ public class BillDAO {
     }
 
     public int addBill(Bill bill, Connection conn) throws SQLException {
-        String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO bills (customer_account_number, user_id, amount, date, email, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
         int generatedId = -1;
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, bill.getCustomerAccountNumber());
             stmt.setInt(2, bill.getUserId());
             stmt.setDouble(3, bill.getAmount());
             stmt.setDate(4, new java.sql.Date(bill.getDate().getTime()));
+             stmt.setString(5, bill.getEmail());
+            stmt.setString(6, bill.getPaymentMethod());
             stmt.executeUpdate();
-
+            
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) generatedId = rs.getInt(1);
             }
