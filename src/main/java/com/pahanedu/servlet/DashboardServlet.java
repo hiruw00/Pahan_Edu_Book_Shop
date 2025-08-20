@@ -1,10 +1,11 @@
 package com.pahanedu.servlet;
 
-import com.pahanedu.model.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import com.pahanedu.business.user.model.User;
+
 import java.io.IOException;
 
 @WebServlet("/admin/dashboard")
