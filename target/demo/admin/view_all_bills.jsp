@@ -1,40 +1,30 @@
 <%@ page import="com.pahanedu.business.bill.model.Bill" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cashier Dashboard - View Bills</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - All Bills</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body class="dashboard-body">
 <div class="dashboard-wrapper">
     <%
-    Object showBillObj = request.getAttribute("showBillId");
-    Integer showBillId = null;
+        String showBillId = (String) request.getAttribute("showBillId");
+        List<Bill> bills = (List<Bill>) request.getAttribute("bills");
 
-    if (showBillObj instanceof Integer) {
-        showBillId = (Integer) showBillObj;
-    }
-
-    List<Bill> bills = (List<Bill>) request.getAttribute("bills");
-
-    if (showBillId != null) {
-%>
+        if (showBillId != null && !showBillId.isEmpty()) {
+    %>
     <input type="hidden" id="autoShowBillId" value="<%= showBillId %>" />
-<%
-    }
-%>
+    <%
+        }
+    %>
 
-   
-    <!-- Top Border Header -->
     <div class="top-header">
         <div class="top-left">
             <i class="fas fa-file-alt"></i>
-            <strong style="font-size: 20px;">Pahana Edu Bookshop - Cashier</strong>
+            <strong style="font-size: 20px;">Pahana Edu Bookshop - Admin</strong>
         </div>
         <div class="top-right">
             <form action="${pageContext.request.contextPath}/logout" method="post" style="display:inline;">
@@ -43,21 +33,23 @@
         </div>
     </div>
 
-    <!-- Navigation Bar -->
     <div class="navbar">
         <div class="nav-left">
             <div class="nav-links">
-                <a href="<%= request.getContextPath() %>/cashier/dashboard.jsp">Dashboard</a>
-                <a href="${pageContext.request.contextPath}/customers">Customers</a>
-                <a href="${pageContext.request.contextPath}/cashier/items.jsp">Items</a>
-                <a href="<%= request.getContextPath() %>/cashier/create_bill.jsp">Create Bill</a>
-                <a href="<%= request.getContextPath() %>/view_bills">View Bills</a>
-                <a href="<%= request.getContextPath() %>/cashier/help.jsp">Help</a>
+                <a href="dashboard.jsp">Dashboard</a>
+                <a href="${pageContext.request.contextPath}/addCashier">Cashiers</a>
+                <a href="${pageContext.request.contextPath}/admin/customers">Customers</a>
+                <a href="items.jsp">Items</a>
+                <a href="${pageContext.request.contextPath}/admin/create_bill.jsp">Create Bill</a>
+                <!-- Updated link to call servlet -->
+                <a href="${pageContext.request.contextPath}/view_all_bills">Billing</a>
+                <a href="<%=request.getContextPath()%>/admin/reports">Reports</a>
+                <a href="help.jsp">Help</a>
             </div>
         </div>
     </div>
- 
-       <!-- Main Content -->
+
+    <!-- Main Content -->
     <div class="main-content">
         <h2 style="margin-bottom: 20px;">Created Bills</h2>
         <div class="card-container">
@@ -68,12 +60,12 @@
                 <div class="bill-card">
                     <h3>Bill ID: <%= bill.getId() %></h3>
                     <p>Account #: <%= bill.getCustomerAccountNumber() %></p>
-                    <p>Email: <%= bill.getEmail() %></p>
-                    <p>Payment Method: <%= bill.getPaymentMethod() %></p>
                     <p>Amount: Rs. <%= bill.getAmount() %></p>
-                  <button <%= "onclick=\"showBillModal(" + bill.getId() + ")\"" %> class="view-btn">View</button>
-                  <button <%= "onclick=\"openMailClient(" + bill.getId() + ", '" + bill.getCustomerAccountNumber() + "', " + bill.getAmount() + ")\"" %> class="email-btn">Email</button>
-                    </div>
+                    <p>Email: <%= bill.getEmail() %></p> <!-- NEW -->
+                    <p>Payment Method: <%= bill.getPaymentMethod() %></p> <!-- NEW -->
+                    <button <%= "onclick=\"showBillModal(" + bill.getId() + ")\"" %> class="view-btn">View</button>
+                    <button <%= "onclick=\"openMailClient(" + bill.getId() + ", '" + bill.getCustomerAccountNumber() + "', " + bill.getAmount() + ")\"" %> class="email-btn">Email</button>
+                </div>
             <%
                     }
                 } else {
@@ -119,9 +111,8 @@
         if (billInput && billInput.value) {
             showBillModal(billInput.value);
         }
-        
     };
-    // Open default mail client with pre-filled subject and body
+
     function openMailClient(billId, accountNumber, amount) {
         const subject = encodeURIComponent(`Your Bill #${billId} from Pahan Edu Bookshop`);
         const body = encodeURIComponent(
@@ -136,8 +127,6 @@
             `Best regards,\n` +
             `Pahan Edu Bookshop`
         );
-
-        // Opens the default mail client with empty recipient, prefilled subject and body
         window.location.href = `mailto:?subject=${subject}&body=${body}`;
     }
 </script>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cashier Help - Pahana Edu</title>
+    <title>Admin Help - Pahan Edu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,12 @@
 <body class="dashboard-body">
 <div class="dashboard-wrapper">
 
-    <!-- Top Border Header -->
+    <!-- Top Header -->
     <div class="top-header">
         <div class="top-left">
+            <!-- Updated icon to a help icon -->
             <i class="fas fa-question-circle"></i>
-            <strong style="font-size: 20px;">Pahana Edu Bookshop - Cashier Help</strong>
+            <strong style="font-size: 20px;">Pahana Edu Bookshop - Admin Help</strong>
         </div>
         <div class="top-right">
             <form action="${pageContext.request.contextPath}/logout" method="post" style="display:inline;">
@@ -27,17 +28,19 @@
     <div class="navbar">
         <div class="nav-left">
             <div class="nav-links">
-                <a href="<%= request.getContextPath() %>/cashier/dashboard.jsp">Dashboard</a>
-                <a href="${pageContext.request.contextPath}/customers">Customers</a>
-                <a href="${pageContext.request.contextPath}/cashier/items.jsp">Items</a>
-                <a href="create_bill.jsp">Create Bill</a>
-                <a href="<%= request.getContextPath() %>/view_bills">View Bills</a>
-                <a href="<%= request.getContextPath() %>/cashier/help.jsp" class="active">Help</a>
+                <a href="dashboard.jsp">Dashboard</a>
+                <a href="${pageContext.request.contextPath}/addCashier">Cashiers</a>
+                <a href="${pageContext.request.contextPath}/admin/customers">Customers</a>
+                <a href="items.jsp">Items</a>
+                <a href="${pageContext.request.contextPath}/admin/create_bill.jsp">Create Bill</a>
+                <a href="${pageContext.request.contextPath}/admin/view_all_bills.jsp">Billing</a>
+                <a href="<%=request.getContextPath()%>/admin/reports">Reports</a>
+                <a href="help.jsp" class="active">Help</a>
             </div>
         </div>
     </div>
 
-    <!-- FAQ Section -->
+    <!-- Help Section -->
     <div class="faq-section">
         <h2 class="faq-heading">Frequently Asked Questions (FAQ)</h2>
 
@@ -51,41 +54,51 @@
 
             <div class="faq-item">
                 <button class="accordion">
-                    Why can't I see the latest bill after creating it?
+                    Why can't I edit customer details?
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="panel">
-                    <p>After submitting a bill, the system auto-redirects you to 'View Bills' and opens the latest bill in a popup. If that doesn't happen, try refreshing or check your browser settings.</p>
+                    <p>This may happen if the customer data is being updated simultaneously by another user. Try reloading the page or ensuring you're editing from the correct role.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="accordion">
-                    What if customer details are not showing?
+                    How do I add a new item to the system?
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="panel">
-                    <p>This may occur if the customer was recently deleted or due to temporary DB connection issues. Try refreshing or contact an admin.</p>
+                    <p>Go to the 'Items' section and click the 'Add New Item' button. Fill out the form and click submit to store the item in the database.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="accordion">
-                    How do I print a bill?
+                    What does 'Out of Stock' mean in item management?
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="panel">
-                    <p>Click on the "View" button of a bill card, then press the 🖨️ Print button inside the modal to print it.</p>
+                    <p>'Out of Stock' indicates that the quantity of the item is 0 or marked unavailable. You can edit the item to restock it.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="accordion">
-                    I added a wrong item to the bill. What do I do?
+                    Can I delete multiple customers at once?
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="panel">
-                    <p>If the bill is not submitted yet, use the ❌ delete icon next to the item. If already created, contact your supervisor to void it.</p>
+                    <p>Currently, customer deletion must be done individually to prevent accidental data loss. Use the delete icon in each customer's card.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="accordion">
+                    How do I view system reports?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="panel">
+                    <p>Navigate to the 'Reports' page from the navbar. You can filter and download sales, billing, and inventory reports there.</p>
                 </div>
             </div>
 
@@ -95,19 +108,16 @@
 </div>
 
 <script>
-    // Accordion Toggle with down arrow
+    // Accordion Toggle with smooth animation
     const acc = document.getElementsByClassName("accordion");
     for (let i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
             const panel = this.nextElementSibling;
-            const icon = this.querySelector("i");
             if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
                 panel.style.maxHeight = "0px";
-                if(icon) icon.style.transform = "rotate(0deg)";
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
-                if(icon) icon.style.transform = "rotate(180deg)";
             }
         });
     }
@@ -121,12 +131,10 @@
         for (let i = 0; i < buttons.length; i++) {
             const txtValue = buttons[i].textContent || buttons[i].innerText;
             const panel = buttons[i].nextElementSibling;
-            const icon = buttons[i].querySelector("i");
             if (txtValue.toLowerCase().includes(filter)) {
                 buttons[i].style.display = "";
                 panel.style.maxHeight = "0px"; // collapse initially
                 buttons[i].classList.remove("active");
-                if(icon) icon.style.transform = "rotate(0deg)";
             } else {
                 buttons[i].style.display = "none";
                 panel.style.maxHeight = "0px";
