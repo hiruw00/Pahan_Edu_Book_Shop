@@ -1,37 +1,33 @@
 package com.pahanedu.dao;
 
-import com.pahanedu.model.BillItem;
-import com.pahanedu.util.DBUtil;
+import com.pahanedu.business.bill.mapper.BillItemMapper;
+import com.pahanedu.business.bill.model.BillItem;
+import com.pahanedu.business.util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BillItemDAO {
 
-    // Insert a single BillItem
     public void addBillItem(BillItem item) {
         String sql = "INSERT INTO bill_items (bill_id, item_id, quantity, price) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DBUtil.getConnection();
+        try (Connection conn = DBUtil.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, item.getBillId());
             stmt.setInt(2, item.getItemId());
             stmt.setInt(3, item.getQuantity());
             stmt.setDouble(4, item.getPrice());
-
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Optional: Insert multiple BillItems at once
     public void addBillItems(List<BillItem> items) {
         String sql = "INSERT INTO bill_items (bill_id, item_id, quantity, price) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DBUtil.getConnection();
+        try (Connection conn = DBUtil.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             for (BillItem item : items) {
@@ -41,29 +37,38 @@ public class BillItemDAO {
                 stmt.setDouble(4, item.getPrice());
                 stmt.addBatch();
             }
-
             stmt.executeBatch();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public List<BillItem> getBillItemsByBillId(int billId) throws Exception {
-    List<BillItem> items = new ArrayList<>();
-    Connection conn = DBUtil.getConnection();
-    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bill_items WHERE bill_id = ?");
-    stmt.setInt(1, billId);
-    ResultSet rs = stmt.executeQuery();
-    while (rs.next()) {
-        BillItem item = new BillItem();
-        item.setId(rs.getInt("id"));
-        item.setBillId(rs.getInt("bill_id"));
-        item.setItemId(rs.getInt("item_id"));
-        item.setQuantity(rs.getInt("quantity"));
-        item.setPrice(rs.getDouble("price"));
-        items.add(item);
+
+    public void addBillItems(List<BillItem> items, Connection conn) throws Exception {
+        String sql = "INSERT INTO bill_items (bill_id, item_id, quantity, price) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            for (BillItem item : items) {
+                stmt.setInt(1, item.getBillId());
+                stmt.setInt(2, item.getItemId());
+                stmt.setInt(3, item.getQuantity());
+                stmt.setDouble(4, item.getPrice());
+                stmt.addBatch();
+            }
+            stmt.executeBatch();
+        }
     }
-    return items;
-}
 
-}
+    public List<BillItem> getBillItemsByBillId(int billId) throws Exception {
+        List<BillItem> items = new ArrayList<>();
+        try (Connection conn = DBUtil.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM bill_items WHERE bill_id = ?")) {
 
+            stmt.setInt(1, billId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    items.add(BillItemMapper.map(rs));
+                }
+            }
+        }
+        return items;
+    }
+}

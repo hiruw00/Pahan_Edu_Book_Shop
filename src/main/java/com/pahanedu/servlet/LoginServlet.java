@@ -1,7 +1,7 @@
 package com.pahanedu.servlet;
 
+import com.pahanedu.business.user.model.User;
 import com.pahanedu.dao.UserDAO;
-import com.pahanedu.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,36 +14,23 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() {
-        userDAO = new UserDAO(); // create UserDAO instance
+        userDAO = new UserDAO();
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get user input
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        // Check user in DB
         User user = userDAO.getUserByUsernameAndPassword(username, password);
 
         if (user != null) {
-            // Successful login → create session
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());
-
-            // Redirect to role-based dashboard
-            if ("admin".equalsIgnoreCase(user.getRole())) {
-                response.sendRedirect("admin_dashboard.jsp");
-            } else if ("cashier".equalsIgnoreCase(user.getRole())) {
-                response.sendRedirect("cashier_dashboard.jsp");
-            } else {
-                // unknown role
-                response.sendRedirect("login.jsp?error=Invalid+user+role");
-            }
+            response.sendRedirect(request.getContextPath() + user.getDashboardPath());
         } else {
-            // Failed login
-            response.sendRedirect("login.jsp?error=Invalid+username+or+password");
+            response.sendRedirect("login.jsp?error=Invalid+credentials");
         }
     }
 }
