@@ -8,6 +8,7 @@
 <body>
 
 <div class="login-card">
+    <h1>Welcome to Pahana Edu Book Shop</h1>
     <h2>Login</h2>
 
     <form action="login" method="post">
@@ -22,9 +23,9 @@
     <% } %>
 
     <div class="credentials">
-        <strong>Sample Logins:</strong><br>
+        <strong> Logins:</strong><br>
         Admin → <code>admin</code> / <code>admin123</code><br>
-        Cashier → <code>cashier</code> / <code>cashier123</code>
+     
     </div>
 </div>
 

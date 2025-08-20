@@ -79,7 +79,10 @@ public class AdminCustomerServlet extends HttpServlet {
     private void handleEditCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             int originalAccountNumber = Integer.parseInt(request.getParameter("originalAccountNumber"));
-            int unitsConsumed = Integer.parseInt(request.getParameter("unitsConsumed")); // Retain existing value
+             // Fetch existing customer to preserve unitsConsumed
+             CustomerDTO existing = service.getCustomerByAccountNumber(originalAccountNumber);
+
+            int unitsConsumed = (existing != null) ? existing.getUnitsConsumed() : 0;// Retain existing value
             CustomerDTO dto = new CustomerDTO(
                     Integer.parseInt(request.getParameter("accountNumber")),
                     request.getParameter("name"),

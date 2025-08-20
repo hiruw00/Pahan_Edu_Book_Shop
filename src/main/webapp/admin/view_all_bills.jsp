@@ -23,8 +23,8 @@
 
     <div class="top-header">
         <div class="top-left">
-            <i class="fas fa-chart-line"></i>
-            <strong style="font-size: 20px;">Pahan Edu Bookshop - Admin</strong>
+            <i class="fas fa-file-alt"></i>
+            <strong style="font-size: 20px;">Pahana Edu Bookshop - Admin</strong>
         </div>
         <div class="top-right">
             <form action="${pageContext.request.contextPath}/logout" method="post" style="display:inline;">
@@ -43,7 +43,7 @@
                 <a href="${pageContext.request.contextPath}/admin/create_bill.jsp">Create Bill</a>
                 <!-- Updated link to call servlet -->
                 <a href="${pageContext.request.contextPath}/view_all_bills">Billing</a>
-                <a href="<%=request.getContextPath()%>/admin/reports" class="active">Reports</a>
+                <a href="<%=request.getContextPath()%>/admin/reports">Reports</a>
                 <a href="help.jsp">Help</a>
             </div>
         </div>
@@ -61,6 +61,8 @@
                     <h3>Bill ID: <%= bill.getId() %></h3>
                     <p>Account #: <%= bill.getCustomerAccountNumber() %></p>
                     <p>Amount: Rs. <%= bill.getAmount() %></p>
+                    <p>Email: <%= bill.getEmail() %></p> <!-- NEW -->
+                    <p>Payment Method: <%= bill.getPaymentMethod() %></p> <!-- NEW -->
                     <button <%= "onclick=\"showBillModal(" + bill.getId() + ")\"" %> class="view-btn">View</button>
                     <button <%= "onclick=\"openMailClient(" + bill.getId() + ", '" + bill.getCustomerAccountNumber() + "', " + bill.getAmount() + ")\"" %> class="email-btn">Email</button>
                 </div>
@@ -118,6 +120,8 @@
             `Please find your bill details below:\n` +
             `Bill ID: ${billId}\n` +
             `Account Number: ${accountNumber}\n` +
+            `Email: ${email}\n` + // NEW
+            `Payment Method: ${paymentMethod}\n` + // NEW
             `Amount: Rs. ${amount}\n\n` +
             `Thank you for your business.\n\n` +
             `Best regards,\n` +

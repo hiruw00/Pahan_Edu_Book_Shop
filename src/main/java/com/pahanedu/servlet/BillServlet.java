@@ -183,9 +183,9 @@ public class BillServlet extends HttpServlet {
 
     private void redirectWithError(HttpServletResponse response, String source) throws IOException {
         if ("admin".equalsIgnoreCase(source)) {
-            response.sendRedirect("admin/create_bill.jsp?error=true");
+            response.sendRedirect("admin/create_bill?error=true");
         } else {
-            response.sendRedirect("cashier/create_bill.jsp?error=true");
+            response.sendRedirect("cashier/create_bill?error=true");
         }
     }
 }

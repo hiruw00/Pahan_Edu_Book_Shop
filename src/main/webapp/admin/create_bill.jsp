@@ -74,8 +74,8 @@
     <!-- Top Border Header -->
     <div class="top-header">
         <div class="top-left">
-            <i class="fas fa-chart-line"></i>
-            <strong style="font-size: 20px;">Pahan Edu Bookshop - Admin</strong>
+            <i class="fas fa-file-invoice"></i>
+            <strong style="font-size: 20px;">Pahana Edu Bookshop - Admin</strong>
         </div>
         <div class="top-right">
             <form action="${pageContext.request.contextPath}/logout" method="post" style="display:inline;">
@@ -94,7 +94,7 @@
                 <a href="items.jsp">Items</a>
                 <a href="${pageContext.request.contextPath}/admin/create_bill.jsp">Create Bill</a>
                 <a href="${pageContext.request.contextPath}/view_all_bills">Billing</a>
-                <a href="<%=request.getContextPath()%>/admin/reports" class="active">Reports</a>
+                <a href="<%=request.getContextPath()%>/admin/reports">Reports</a>
                 <a href="help.jsp">Help</a>
             </div>
         </div>
@@ -114,6 +114,17 @@
                             <%= customer.getAccountNumber() %> - <%= customer.getName() %>
                         </option>
                     <% } %>
+                </select>
+
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="Enter customer email" required />
+
+                <label>Payment Method:</label>
+                <select name="payment_method" required>
+                <option disabled selected>Select Payment Method</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+                <option value="Online">Online</option>
                 </select>
 
                 <label>Admin (User ID):</label>
