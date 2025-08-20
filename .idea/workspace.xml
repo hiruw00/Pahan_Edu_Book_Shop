@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4c39bfd9-72c1-416a-920b-1d25ebff5c25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/dto/BillDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/dto/BillItemDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/dto/CustomerDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/dto/ItemDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/mapper/CustomerMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/mapper/ItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/model/Bill.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/AdminCustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/AdminCustomerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/BillServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/BillServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/DashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/DashboardServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/DeleteCustomerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pahanedu/servlet/RemoveItemsServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/create_bill.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/create_bill.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/items.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/items.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/view_all_bills.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/view_all_bills.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cashier/create_bill.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cashier/create_bill.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cashier/help.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cashier/help.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cashier/view_bills.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cashier/view_bills.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pahanedu/persistence/observer/SalesReportObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pahanedu/persistence/observer/SalesReportObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo.war" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2zxxu8y8rcJSiBo340jwPL8N0zY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AddCashierTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CustomerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LoginTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/newpahan/Pahan_Edu/Pahan_Edu/Pahan_Edu_Book_Shop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Pahan_Edu_Book_Shop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Pahan_Edu_Book_Shop" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="JSP" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4c39bfd9-72c1-416a-920b-1d25ebff5c25" name="Changes" comment="" />
+      <created>1752686745413</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752686745413</updated>
+      <workItem from="1752686748090" duration="870000" />
+      <workItem from="1754204523227" duration="38000" />
+      <workItem from="1754896003896" duration="68000" />
+      <workItem from="1754897508770" duration="183000" />
+      <workItem from="1754941613044" duration="24000" />
+      <workItem from="1755323366790" duration="2735000" />
+      <workItem from="1755355895787" duration="1285000" />
+      <workItem from="1755605660479" duration="10053000" />
+      <workItem from="1755661843799" duration="2404000" />
+      <workItem from="1755694207768" duration="2657000" />
+      <workItem from="1755700668726" duration="1197000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
